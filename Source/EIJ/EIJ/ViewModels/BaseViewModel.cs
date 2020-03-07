@@ -7,21 +7,21 @@ namespace EIJ.ViewModels
 {
   public class BaseViewModel : PropertyChangedBase
   {
-    private bool isBusy;
+    private bool _isBusy;
 
-    private string title = string.Empty;
+    private string _title = string.Empty;
     public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
     public bool IsBusy
     {
-      get => isBusy;
-      set => SetValue(ref isBusy, value);
+      get => _isBusy;
+      set => SetValue(ref _isBusy, value);
     }
 
     public string Title
     {
-      get => title;
-      set => SetValue(ref title, value);
+      get => _title;
+      set => SetValue(ref _title, value);
     }
   }
 }
