@@ -1,0 +1,390 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+  x:Class="EIJ.Views.RulesPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:platformConfiguration="clr-namespace:Xamarin.Forms.PlatformConfiguration;assembly=Xamarin.Forms.Core"
+  xmlns:system="clr-namespace:System;assembly=netstandard"
+  xmlns:vm="clr-namespace:EIJ.ViewModels"
+  Title="{Binding Title}"
+  mc:Ignorable="d">
+
+  <ContentPage.BindingContext>
+    <vm:RulesViewModel />
+  </ContentPage.BindingContext>
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Color x:Key="Primary">#2196F3</Color>
+      <Color x:Key="Accent">#96d1ff</Color>
+      <Color x:Key="LightTextColor">#999999</Color>
+      <Color x:Key="TitleColor">#565E70</Color>
+    </ResourceDictionary>
+
+    <Style x:Key="LineSeparatorStyle" TargetType="{x:Type BoxView}">
+      <Setter Property="Margin" Value="0,7,0,0" />
+      <Setter Property="CornerRadius" Value="0,5,0,5" />
+      <Setter Property="HeightRequest" Value="3" />
+      <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+      <Setter Property="VerticalOptions" Value="Center" />
+      <Setter Property="Color" Value="LightGray" />
+    </Style>
+  </ContentPage.Resources>
+
+  <Grid RowSpacing="0">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+
+    <StackLayout
+      Grid.Row="0"
+      BackgroundColor="{StaticResource Accent}"
+      HorizontalOptions="Fill"
+      VerticalOptions="Fill">
+
+      <StackLayout
+        HorizontalOptions="FillAndExpand"
+        Orientation="Horizontal"
+        VerticalOptions="Center">
+
+        <!--  Everyone is John: The Rules  -->
+
+        <ContentView
+          Padding="0,20,0,20"
+          HorizontalOptions="CenterAndExpand"
+          VerticalOptions="Center">
+          <Grid RowSpacing="-7">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="*" />
+              <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label
+              Grid.Row="0"
+              FontFamily="GochiHand-Regular.ttf#GochiHand-Regular"
+              FontSize="40"
+              HorizontalTextAlignment="Center"
+              Text="Everyone is John:"
+              TextColor="{StaticResource TitleColor}" />
+
+            <StackLayout Grid.Row="1" Orientation="Horizontal">
+              <BoxView
+                CornerRadius="5,0,5,0"
+                Style="{StaticResource LineSeparatorStyle}"
+                Color="{StaticResource TitleColor}" />
+
+              <Label
+                FontFamily="GochiHand-Regular.ttf#GochiHand-Regular"
+                FontSize="40"
+                HorizontalTextAlignment="Center"
+                Text="The Rules"
+                TextColor="{StaticResource TitleColor}" />
+
+              <BoxView Style="{StaticResource LineSeparatorStyle}" Color="{StaticResource TitleColor}" />
+            </StackLayout>
+
+          </Grid>
+        </ContentView>
+      </StackLayout>
+    </StackLayout>
+
+    <!--  Body  -->
+
+    <ScrollView Grid.Row="1">
+      <StackLayout
+        Padding="16,10,16,10"
+        Orientation="Vertical"
+        Spacing="10">
+
+        <!--  About the game  -->
+
+        <StackLayout Orientation="Horizontal">
+          <Label FontSize="Title">
+            <Label.FormattedText>
+              <FormattedString>
+                <FormattedString.Spans>
+                  <Span
+                    FontAttributes="Bold"
+                    FontSize="Title"
+                    Text="About" />
+                  <Span Text=" " />
+                  <Span ForegroundColor="{StaticResource LightTextColor}" Text="the game" />
+                </FormattedString.Spans>
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+
+          <BoxView Style="{StaticResource LineSeparatorStyle}" />
+        </StackLayout>
+
+
+        <Label FontSize="Medium" Text="Everyone is John is a humorous, competitive role-playing game about playing the various personalities of John, an insane man from Minneapolis. One participant is the GM, or, in Everyone is John lingo, &quot;Everyone Else.&quot; All of the other players are Voices in John's head." />
+        <Label FontSize="Medium" Text="Everyone is John uses six-sided dice (you really only need one, but it might be easiest if every participant carries one) for play." />
+
+
+        <!--  Voices  -->
+
+        <StackLayout Orientation="Horizontal">
+          <Label>
+            <Label.FormattedText>
+              <FormattedString>
+                <Span
+                  FontSize="Title"
+                  ForegroundColor="{StaticResource LightTextColor}"
+                  Text="What are" />
+                <Span FontSize="Title" Text=" " />
+                <Span
+                  FontAttributes="Bold"
+                  FontSize="Title"
+                  Text="Voices" />
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+
+          <BoxView Style="{StaticResource LineSeparatorStyle}" />
+        </StackLayout>
+
+        <Label FontSize="Medium" Text="Voices are the Player Characters of Everyone is John. They are defined by a simple character sheet:" />
+
+        <!--  Willpower  -->
+
+        <Label FontSize="Large" Text="Willpower" />
+        <Frame>
+          <StackLayout>
+            <Label FontSize="Small" Text="Willpower is a pool of points that the Voice can spend to take control of John or improve its chance of success in any given action." />
+            <Label FontSize="Small" Text="Willpower will go down and up a lot in the game, so it might be easier to represent it with tokens rather than numbers on a page." />
+            <Label FontSize="Small" Text="Willpower starts off at 10 for most Voices." />
+          </StackLayout>
+        </Frame>
+
+        <!--  Skills  -->
+
+        <Label
+          Margin="0,5,0,0"
+          FontSize="Large"
+          Text="Skills" />
+        <Frame>
+          <StackLayout>
+            <Label FontSize="Small" Text="Each Voice has two or three skills. This is a free-form game, so just write down a short description of the skill, like &quot;Drives well,&quot; or &quot;Good at persuading people.&quot;" />
+            <Label FontSize="Small" Text="Most Voices have two skills, but you can have three if you start at 7 Willpower instead of 10." />
+          </StackLayout>
+        </Frame>
+
+        <!--  Obsession  -->
+
+        <Label
+          Margin="0,5,0,0"
+          FontSize="Large"
+          Text="Obsessions" />
+        <Frame>
+          <StackLayout>
+            <Label FontSize="Small" Text="This is kind of like a winning condition: if you complete your obsession more than other Voices complete their obsession, you win." />
+
+            <Label FontSize="Small" Text="Obsessions come in three grades: " />
+
+            <Label Margin="15,0,0,0">
+              <Label.FormattedText>
+                <FormattedString>
+                  <Span
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Text="• Level 1" />
+                  <Span FontSize="Small" Text=" " />
+                  <Span FontSize="Small" Text=": Pretty easy to accomplish," />
+                </FormattedString>
+              </Label.FormattedText>
+            </Label>
+
+            <Label Margin="15,0,0,0">
+              <Label.FormattedText>
+                <FormattedString>
+                  <Span
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Text="• Level 2" />
+                  <Span FontSize="Small" Text=" " />
+                  <Span FontSize="Small" Text=": Difficult or risky," />
+                </FormattedString>
+              </Label.FormattedText>
+            </Label>
+
+            <Label Margin="15,0,0,0">
+              <Label.FormattedText>
+                <FormattedString>
+                  <Span
+                    FontAttributes="Bold"
+                    FontSize="Small"
+                    Text="• Level 3" />
+                  <Span FontSize="Small" Text=" " />
+                  <Span FontSize="Small" Text=": Nearly impossible to accomplish." />
+                </FormattedString>
+              </Label.FormattedText>
+            </Label>
+
+            <Label FontSize="Small" Text="The harder obsessions count more than the easier ones." />
+          </StackLayout>
+        </Frame>
+
+        <Label FontSize="Medium" Text="If you're going to seriously compete with the other Voices, you probably should keep your sheet a secret." />
+
+        <!--  John  -->
+
+        <StackLayout Orientation="Horizontal">
+          <Label>
+            <Label.FormattedText>
+              <FormattedString>
+                <Span
+                  FontSize="Title"
+                  ForegroundColor="{StaticResource LightTextColor}"
+                  Text="Who is" />
+                <Span FontSize="Title" Text=" " />
+                <Span
+                  FontAttributes="Bold"
+                  FontSize="Title"
+                  Text="John" />
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+
+          <BoxView Style="{StaticResource LineSeparatorStyle}" />
+        </StackLayout>
+
+        <Label FontSize="Medium" Text="John is a totally insane man in Minneapolis. He is controlled by the Voices in his head -- one at a time, of course." />
+
+        <Label>
+          <Label.FormattedText>
+            <FormattedString>
+              <Span FontSize="Medium" Text="John is not terribly competent; he has difficulty with a lot of things that you and I might take for granted." />
+              <Span FontSize="Medium" Text=" " />
+              <Span
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="Whenever John attempts anything that an ordinary person might have any chance of failure at, he needs to roll for success." />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+        <Label
+          FontAttributes="Bold"
+          FontSize="Medium"
+          Text="The Voice who is currently in control of John does the rolling. If that Voice has a skill that covers the challenge, the Voice needs to roll a 3 or higher on the single d6. If it doesn't have a skill, it needs to roll a 6." />
+
+        <Label>
+          <Label.FormattedText>
+            <FormattedString>
+              <Span FontSize="Medium" Text="However, before the roll, the Voice can spend any number of Willpower points to get a" />
+              <Span FontSize="Medium" Text=" " />
+              <Span
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="+1 per point spent" />
+              <Span FontSize="Medium" Text=" " />
+              <Span FontSize="Medium" Text="on the die roll. This can make success automatic." />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="Medium" Text="Becoming the active Voice is a bit of a challenge, though. Whenever John wakes up or gets hurt, a test for control of John happens. Also, whenever the currently active Voice fails a roll or completes its obsession, a test for control of John happens." />
+
+        <Label FontSize="Medium" Text="When a test for control of John occurs, all of the Voices who are interested simultaneously bid one or more Willpower points. Voices don't have to bid if they don't want to (and you can &quot;bid&quot; zero tokens if you want to fake out the other Voices). " />
+
+        <Label>
+          <Label.FormattedText>
+            <FormattedString>
+              <Span
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="The highest number of Willpower becomes the active Voice." />
+              <Span FontSize="Medium" Text=" " />
+              <Span FontSize="Medium" Text="If multiple people bid the same highest amount, then they roll off to see who becomes active." />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="Medium" Text="The Voice who becomes active loses the amount of Willpower it bids. All others keep their bids. It's perfectly acceptable for the previously active Voice to win a bid and remain active." />
+
+        <Label>
+          <Label.FormattedText>
+            <FormattedString>
+              <Span FontSize="Medium" Text="Whenever John wakes up, the struggle for control of John happens" />
+              <Span FontSize="Medium" Text=" " />
+              <Span
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="before" />
+              <Span FontSize="Medium" Text=" " />
+              <Span FontSize="Medium" Text="the GM describes the situation John wakes up into." />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+        <Label FontSize="Medium" Text="John is pretty easily distracted. Whenever nothing exciting is happening for ten minutes or more (such as on a bus ride or the like), the GM should roll a die." />
+
+        <Label>
+          <Label.FormattedText>
+            <FormattedString>
+              <Span
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="On a roll of 4 or higher" />
+              <Span FontSize="Medium" Text=", John goes to sleep and wakes up whenever (prompting a struggle for control of John). When John naps like this, all of the Voices" />
+              <Span FontSize="Medium" Text=" " />
+              <Span
+                FontAttributes="Bold"
+                FontSize="Medium"
+                Text="gain one Willpower." />
+            </FormattedString>
+          </Label.FormattedText>
+        </Label>
+
+        <!--  Playing  -->
+
+        <StackLayout Orientation="Horizontal">
+          <Label>
+            <Label.FormattedText>
+              <FormattedString>
+                <Span
+                  FontAttributes="Bold"
+                  FontSize="Title"
+                  Text="Playing" />
+                <Span FontSize="Title" Text=" " />
+                <Span
+                  FontSize="Title"
+                  ForegroundColor="{StaticResource LightTextColor}"
+                  Text="the game" />
+              </FormattedString>
+            </Label.FormattedText>
+          </Label>
+
+          <BoxView Style="{StaticResource LineSeparatorStyle}" />
+        </StackLayout>
+
+        <Label FontSize="Medium" Text="Play begins with John waking up in the morning (and a test for control of him). The GM then describes the circumstances into which he wakes up. With John, you never can tell. He could be in a gutter somewhere, or he could be in a palatial estate, or anywhere in between. The Voices really have no idea how they ended up here." />
+
+        <Label FontSize="Medium" Text="At this point, the Voices should start working on fulfilling their obsessions and avoiding getting John killed. Inevitably, their Willpower will decrease. Once all of the Voices are out of Willpower, John sinks back into sleep, and the game session is over." />
+
+        <Label FontSize="Medium" Text="At this point, the Voices reveal their obsessions and count up how many times each was filled. Note that it counts for you if someone else is Active and fulfills your obsession." />
+
+        <Label FontSize="Medium" Text="Now, multiply the number of times you fulfilled your obsession by your obsession's rank (1, 2, or 3). That's the number of points you have. Highest number of points wins the game, and, generally speaking, is the GM of the next game of Everyone is John" />
+
+        <Frame>
+          <StackLayout Orientation="Vertical">
+            <Label FontSize="Small" Text="Note:" />
+            <Label FontSize="Small" Text="These rules are guidelines. By being creative and constructing new additions to the rules, the game can take a very different turn!" />
+          </StackLayout>
+        </Frame>
+
+        <Button
+          BackgroundColor="{StaticResource Primary}"
+          Command="{Binding OpenWebCommand}"
+          Text="View Rulebook"
+          TextColor="White" />
+      </StackLayout>
+    </ScrollView>
+  </Grid>
+
+</ContentPage>
