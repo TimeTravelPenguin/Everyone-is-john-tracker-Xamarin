@@ -40,6 +40,7 @@
       <RowDefinition Height="*" />
     </Grid.RowDefinitions>
 
+    <!--  Banner  -->
     <StackLayout
       Grid.Row="0"
       BackgroundColor="{StaticResource Accent}"
@@ -125,6 +126,14 @@
         <Label FontSize="Medium" Text="Everyone is John is a humorous, competitive role-playing game about playing the various personalities of John, an insane man from Minneapolis. One participant is the GM, or, in Everyone is John lingo, &quot;Everyone Else.&quot; All of the other players are Voices in John's head." />
         <Label FontSize="Medium" Text="Everyone is John uses six-sided dice (you really only need one, but it might be easiest if every participant carries one) for play." />
 
+        <!--  Note to user  -->
+
+        <Frame>
+          <StackLayout Orientation="Vertical">
+            <Label FontSize="Subtitle" Text="Note:" />
+            <Label FontSize="Small" Text="These rules are guidelines. By being creative, and constructing new additions to the rules, the game can take a very different turn!" />
+          </StackLayout>
+        </Frame>
 
         <!--  Voices  -->
 
@@ -369,14 +378,7 @@
 
         <Label FontSize="Medium" Text="At this point, the Voices reveal their obsessions and count up how many times each was filled. Note that it counts for you if someone else is Active and fulfills your obsession." />
 
-        <Label FontSize="Medium" Text="Now, multiply the number of times you fulfilled your obsession by your obsession's rank (1, 2, or 3). That's the number of points you have. Highest number of points wins the game, and, generally speaking, is the GM of the next game of Everyone is John" />
-
-        <Frame>
-          <StackLayout Orientation="Vertical">
-            <Label FontSize="Small" Text="Note:" />
-            <Label FontSize="Small" Text="These rules are guidelines. By being creative and constructing new additions to the rules, the game can take a very different turn!" />
-          </StackLayout>
-        </Frame>
+        <Label FontSize="Medium" Text="Now, multiply the number of times you fulfilled your obsession by your obsession's rank (1, 2, or 3). That's the number of points you have. Highest number of points wins the game, and, generally speaking, is the GM of the next game of Everyone is John." />
 
         <Button
           BackgroundColor="{StaticResource Primary}"
