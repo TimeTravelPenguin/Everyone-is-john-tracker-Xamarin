@@ -1,19 +1,13 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using EIJ.Services;
-using EIJ.Views;
+﻿using Xamarin.Forms;
 
 namespace EIJ
 {
   public partial class App : Application
   {
-
     public App()
     {
       InitializeComponent();
 
-      DependencyService.Register<MockDataStore>();
       MainPage = new AppShell();
     }
 
