@@ -1,7 +1,4 @@
-﻿using EIJ.Models;
-using EIJ.Services;
-using EIJ.Types;
-using Xamarin.Forms;
+﻿using EIJ.Types;
 
 namespace EIJ.ViewModels
 {
@@ -10,7 +7,6 @@ namespace EIJ.ViewModels
     private bool _isBusy;
 
     private string _title = string.Empty;
-    public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
     public bool IsBusy
     {
