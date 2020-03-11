@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage
+  x:Class="EIJ.Pages.VoicesPage"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:models="clr-namespace:EIJ.Models;assembly=EIJ"
+  xmlns:viewModels="clr-namespace:EIJ.ViewModels;assembly=EIJ"
+  xmlns:views="clr-namespace:EIJ.Views;assembly=EIJ"
+  mc:Ignorable="d">
+
+  <ContentPage.BindingContext>
+    <viewModels:VoicesViewModel />
+  </ContentPage.BindingContext>
+
+  <ContentPage.Resources>
+
+    <Style
+      x:Key="VoiceDisplayStyle"
+      x:DataType="models:VoiceModel"
+      TargetType="views:VoiceInfoContainerView">
+      <Setter Property="PlayerName" Value="{Binding PlayerName}" />
+    </Style>
+
+  </ContentPage.Resources>
+
+  <Grid>
+    <ListView ItemsSource="{Binding Voices, Mode=OneWay}">
+
+      <!--<ListView.Behaviors>
+          <behaviors:ItemTappedBehavior Command="{Binding Null}" />
+        </ListView.Behaviors>-->
+
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <views:PancakeItemView BorderColor="Black">
+            <views:VoiceInfoContainerView Style="{StaticResource VoiceDisplayStyle}" />
+          </views:PancakeItemView>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </Grid>
+</ContentPage>

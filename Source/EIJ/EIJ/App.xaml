@@ -5,6 +5,7 @@
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
   mc:Ignorable="d">
   <Application.Resources>
 
@@ -21,6 +22,13 @@
       <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
     </OnPlatform>
 
+    <!--  Pancake view  -->
+    <Style x:Key="PancakeStyle" TargetType="pancakeView:PancakeView">
+      <Setter Property="CornerRadius" Value="20" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="IsClippedToBounds" Value="True" />
+      <Setter Property="HorizontalOptions" Value="Fill" />
+    </Style>
 
   </Application.Resources>
 </Application>

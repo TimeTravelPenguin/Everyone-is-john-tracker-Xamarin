@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+  x:Class="EIJ.Views.VoiceInfoContainerView"
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  mc:Ignorable="d">
+
+  <Grid.RowDefinitions>
+    <RowDefinition Height="*" />
+  </Grid.RowDefinitions>
+
+  <StackLayout Margin="16" Orientation="Horizontal">
+    <Label Text="Hello there," />
+    <Label x:Name="PlayerNameLabel" d:Text="Username" />
+  </StackLayout>
+
+</Grid>

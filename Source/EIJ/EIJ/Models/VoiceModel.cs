@@ -4,7 +4,7 @@ namespace EIJ.Models
 {
   internal class VoiceModel : PropertyChangedBase
   {
-    private string _playerName;
+    private string _playerName = string.Empty;
 
     public string PlayerName
     {
