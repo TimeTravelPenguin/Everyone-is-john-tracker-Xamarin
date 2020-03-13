@@ -8,27 +8,29 @@
   xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
   mc:Ignorable="d">
   <Application.Resources>
+    <ResourceDictionary>
 
-    <!--  Fonts  -->
-    <OnPlatform x:Key="GochiHandFamily" x:TypeArguments="x:String">
-      <On Platform="iOS" Value="GochiHand-Regular" />
-      <On Platform="Android" Value="GochiHand-Regular.ttf#GochiHand-Regular" />
-      <On Platform="UWP" Value="Assets/Fonts/GochiHand-Regular.ttf#GochiHand-Regular" />
-    </OnPlatform>
+      <!--  Fonts  -->
+      <OnPlatform x:Key="GochiHandFamily" x:TypeArguments="x:String">
+        <On Platform="iOS" Value="GochiHand-Regular" />
+        <On Platform="Android" Value="GochiHand-Regular.ttf#GochiHand-Regular" />
+        <On Platform="UWP" Value="Assets/Fonts/GochiHand-Regular.ttf#GochiHand-Regular" />
+      </OnPlatform>
 
-    <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
-      <On Platform="iOS" Value="Material Design Icons" />
-      <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
-      <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
-    </OnPlatform>
+      <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+        <On Platform="iOS" Value="Material Design Icons" />
+        <On Platform="Android" Value="materialdesignicons-webfont.ttf#Material Design Icons" />
+        <On Platform="UWP" Value="Assets/Fonts/materialdesignicons-webfont.ttf#Material Design Icons" />
+      </OnPlatform>
 
-    <!--  Pancake view  -->
-    <Style x:Key="PancakeStyle" TargetType="pancakeView:PancakeView">
-      <Setter Property="CornerRadius" Value="20" />
-      <Setter Property="BorderThickness" Value="1" />
-      <Setter Property="IsClippedToBounds" Value="True" />
-      <Setter Property="HorizontalOptions" Value="Fill" />
-    </Style>
+      <!--  Pancake view  -->
+      <Style x:Key="PancakeStyle" TargetType="{x:Type pancakeView:PancakeView}">
+        <Setter Property="CornerRadius" Value="20" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="IsClippedToBounds" Value="True" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+      </Style>
 
+    </ResourceDictionary>
   </Application.Resources>
 </Application>

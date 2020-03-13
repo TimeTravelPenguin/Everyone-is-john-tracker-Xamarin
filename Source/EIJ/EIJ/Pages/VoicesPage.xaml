@@ -4,11 +4,13 @@
   x:Class="EIJ.Pages.VoicesPage"
   xmlns="http://xamarin.com/schemas/2014/forms"
   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:behaviors="clr-namespace:EIJ.Behaviors;assembly=EIJ"
   xmlns:d="http://xamarin.com/schemas/2014/forms/design"
   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
   xmlns:models="clr-namespace:EIJ.Models;assembly=EIJ"
   xmlns:viewModels="clr-namespace:EIJ.ViewModels;assembly=EIJ"
   xmlns:views="clr-namespace:EIJ.Views;assembly=EIJ"
+  Title="{Binding Title}"
   mc:Ignorable="d">
 
   <ContentPage.BindingContext>
@@ -19,27 +21,61 @@
 
     <Style
       x:Key="VoiceDisplayStyle"
-      x:DataType="models:VoiceModel"
-      TargetType="views:VoiceInfoContainerView">
+      x:DataType="{x:Type models:VoiceModel}"
+      TargetType="{x:Type views:VoiceInfoContainerView}">
+      <Setter Property="HorizontalOptions" Value="Center" />
       <Setter Property="PlayerName" Value="{Binding PlayerName}" />
     </Style>
 
   </ContentPage.Resources>
 
   <Grid>
-    <ListView ItemsSource="{Binding Voices, Mode=OneWay}">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="*" />
+      <RowDefinition Height="Auto" />
+      <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
 
-      <!--<ListView.Behaviors>
-          <behaviors:ItemTappedBehavior Command="{Binding Null}" />
-        </ListView.Behaviors>-->
+    <CollectionView
+      Grid.Row="0"
+      EmptyView="No player information"
+      ItemsSource="{Binding Voices, Mode=OneWay}">
 
-      <ListView.ItemTemplate>
+      <CollectionView.GestureRecognizers>
+        <TapGestureRecognizer
+          Command="{Binding CommandPlayerTapped}"
+          CommandParameter="hi"
+          NumberOfTapsRequired="1" />
+      </CollectionView.GestureRecognizers>
+
+      <CollectionView.ItemTemplate>
         <DataTemplate>
-          <views:PancakeItemView BorderColor="Black">
-            <views:VoiceInfoContainerView Style="{StaticResource VoiceDisplayStyle}" />
-          </views:PancakeItemView>
+
+          <StackLayout>
+            <views:PancakeItemView Margin="5" BorderColor="Black">
+              <views:VoiceInfoContainerView Style="{StaticResource VoiceDisplayStyle}" />
+            </views:PancakeItemView>
+          </StackLayout>
+
         </DataTemplate>
-      </ListView.ItemTemplate>
-    </ListView>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+
+    <Entry
+      Grid.Row="2"
+      ClearButtonVisibility="WhileEditing"
+      HeightRequest="50"
+      Placeholder="Enter name"
+      ReturnType="Done"
+      Text="{Binding InputName}" />
+
+    <Button
+      Grid.Row="3"
+      Command="{Binding CommandAddPlayer}"
+      HeightRequest="55"
+      HorizontalOptions="Center"
+      Text="Add Player"
+      WidthRequest="150" />
   </Grid>
 </ContentPage>

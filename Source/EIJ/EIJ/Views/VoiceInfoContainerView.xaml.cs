@@ -32,7 +32,7 @@ namespace EIJ.Views
     {
       if (!(bindable is VoiceInfoContainerView view) || !(newValue is TPropertyType propertyValue))
       {
-        throw new InvalidOperationException();
+        return;
       }
 
       propertyAssigner.Invoke(view, propertyValue);
